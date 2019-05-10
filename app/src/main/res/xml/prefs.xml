@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:summary="Username and password information"
+        android:title="Login information"
+        android:background="#FF4081">
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="noti"
+
+        android:title="Notification" />
+    </PreferenceCategory>
+</PreferenceScreen>

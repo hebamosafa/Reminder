@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mlayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:id="@+id/textdate"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/texttime"
+        android:layout_marginTop="92dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Select required date"/>
+
+
+    <EditText
+        android:id="@+id/texttime"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="159dp"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="time"
+        android:hint="Select required time"/>
+
+    <EditText
+        android:id="@+id/reminderto"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textdate"
+        android:layout_marginTop="29dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Remind me to..."
+        android:focusableInTouchMode="true"/>
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="150dp"
+        android:layout_height="114dp"
+        android:layout_alignStart="@+id/textdate"
+        android:layout_centerVertical="true">
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="5 min" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="10 min" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="15 min" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="105dp"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textdate"
+        android:layout_marginTop="223dp"
+        android:text="Snooze"
+        android:textSize="30dp"/>
+
+</RelativeLayout>
