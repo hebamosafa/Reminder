@@ -9,19 +9,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Parcelable;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
+import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
-    MediaPlayer mp;
 
+    static MediaPlayer mp;
+
+public static MediaPlayer m(){
+    return mp;
+}
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -29,34 +37,39 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         boolean checkBox = prefs.getBoolean("noti", false);
         if(checkBox)
         {createNotificationChannel(context);
-            Toast.makeText(context,"Item 1 Selected",Toast.LENGTH_LONG).show();
+
+            Toast.makeText(context,"Alarm Saved",Toast.LENGTH_LONG).show();
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "H")
                     .setSmallIcon(R.mipmap.noti) //set icon for notification
-                    .setContentTitle("Notifications Example") //set title of notification
-                    .setContentText("Heba loves Ahmed")//this is notification message
-                    .setAutoCancel(true) // makes auto cancel of notification
+                    .setContentTitle("Alarm Notification") //set title of notification
+                    .setContentText("Marry Ahmed Now")//this is notification message
+                    .setAutoCancel(false)
+                    .setColor(255)// makes auto cancel of notification
+                    .setColorized(true)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT); //set priority of notification
 
-
-            Intent notificationIntent = new Intent(context, NotificationView.class);
-            notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                   ////////////////////////////////////////////////////////////////////////
+           Intent notificationIntent = new Intent(context, NotificationView.class);
+           notificationIntent .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             //notification message will get at NotificationView
-            notificationIntent.putExtra("message", "This is a notification message");
+            notificationIntent.putExtra("message", "");
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
             mBuilder.setContentIntent(pendingIntent);
-
+                           ///////////////////////////////////////////////////////////////
             // Add as notification
             NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             manager.notify(0, mBuilder.build());
 
         }
         else{
-            Toast.makeText(context,"Item 2 Selected",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Alarn Saved",Toast.LENGTH_LONG).show();
             mp=MediaPlayer.create(context, R.raw.alarm);
             mp.start();
             Toast.makeText(context, "Alarm....", Toast.LENGTH_LONG).show();
+           Intent intents = new Intent( context,dialog.class);
+           context.startActivity(intents);
             // Vibrate the mobile phone
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(2000);
